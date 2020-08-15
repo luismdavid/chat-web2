@@ -1,0 +1,55 @@
+<div class="container">
+  <mat-card>
+    <mat-grid-list cols="9" rowHeight="100" [formGroup]="form">
+      <mat-grid-tile colspan="5">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="username"
+          />
+          <mat-hint *ngIf="!form.get('username').value"
+            >Ingrese un nombre de usuario</mat-hint
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile rowspan="4" colspan="3">
+        <div class="flex-container">
+          <button class="btn" mat-raised-button color="primary" [disabled]="!form.valid || loading" (click)="submitForm()">
+            Registrarse
+          </button>
+          <a style="color: white;" [routerLink]="['/auth/login']"
+            >Ya tienes una cuenta?</a
+          >
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="5">
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electronico</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="email" />
+          <mat-hint *ngIf="!form.get('email').value"
+            >Ingrese un correo electronico</mat-hint
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="5"
+        ><mat-form-field appearance="outline">
+          <input
+            matInput
+            placeholder="Password"
+            [type]="passwordHide ? 'password' : 'text'"
+            formControlName="password"
+            required
+          />
+          <mat-icon matSuffix (click)="passwordHide = !passwordHide">{{
+            passwordHide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <mat-hint *ngIf="!form.get('password').value"
+            >Enter your password</mat-hint
+          >
+        </mat-form-field></mat-grid-tile
+      >
+    </mat-grid-list>
+  </mat-card>
+</div>

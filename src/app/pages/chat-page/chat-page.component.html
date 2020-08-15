@@ -1,0 +1,16 @@
+<nb-layout>
+  <nb-layout-header subheader> </nb-layout-header>
+
+  <nb-sidebar [nbSpinner]="loading" [containerFixed]="false">
+    <app-chat-mini
+      *ngFor="let chat of chats"
+      [user]="chat.user"
+      [chat]="chat.chat"
+      [lastMessage]="'none'"
+    ></app-chat-mini>
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-basic">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

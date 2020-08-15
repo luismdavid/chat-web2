@@ -1,0 +1,41 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with menu icon"
+          (click)="toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span
+          >Chat-APP{{ currentUser ? " - Welcome " + currentUser.username : "" }}
+        </span>
+        <span class="example-spacer"></span>
+        <nb-search *ngIf="currentUser" type="modal-zoomin"></nb-search>
+
+        <button
+          *ngIf="currentUser"
+          mat-button
+          class="example-icon favorite-icon"
+          title="Cerrar sesion"
+          (click)="authService.logoutUser()"
+        >
+          Cerrar Sesion <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+</nb-layout>
